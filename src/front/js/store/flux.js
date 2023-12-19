@@ -46,7 +46,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+
+			registro: async(mail,password,username) => {
+				try { 
+					const response = await fetch("https://musical-space-cod-pj6gr4p4j6hrw69-3001.app.github.dev/api/signup",{
+						method: "POST",
+						body: JSON.stringify({
+							email: mail,
+							password: password,
+							username: username
+						}),
+						headers: {
+							"Content-type": "application/json"
+						}
+					})
+					
+					const data = await response.json()
+					console.log(data)
+					
+				} catch (error){
+					console.log(error)
+				}
+			},
+			
 		}
 	};
 };

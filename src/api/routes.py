@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
+import json
 
 api = Blueprint('api', __name__)
 
@@ -20,3 +21,16 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/signup', methods=['POST'])
+def create_one_user():
+    body = json.loads(request.data)
+    new_user = User(
+        email=body["email"],
+        password=body["password"],
+        username=body["username"]
+    )
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify({"msg": "user created succesfull"}), 200
+
