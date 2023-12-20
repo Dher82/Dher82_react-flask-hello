@@ -48,12 +48,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 
-			registro: async(mail,password,username) => {
+			registro: async(email,password,username) => {
 				try { 
-					const response = await fetch("https://musical-space-cod-pj6gr4p4j6hrw69-3001.app.github.dev/api/signup",{
+					const response = await fetch("https://jubilant-goldfish-7v7xpxg46v6hrg6w-3001.app.github.dev/api/signup",{
 						method: "POST",
 						body: JSON.stringify({
-							email: mail,
+							email: email,
 							password: password,
 							username: username
 						}),
@@ -69,6 +69,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 				}
 			},
+
+
 			
 		}
 	};

@@ -10,7 +10,7 @@ export const Home = () => {
 	const [password, setPassword] = useState("");
 	const registro = (e) => {
 		e.preventDefault()
-		actions.registro(email, username, password)
+		actions.registro(email, password, username )
 	}
 
 
