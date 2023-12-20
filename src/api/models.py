@@ -15,7 +15,20 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            "username":self.username
+            "User Name":self.UserName
+            
+            # do not serialize the password, its a security breach
+        }
+
+class username(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+    username = db.Column(db.String(80), unique=False, nullable=False)
+
+    def serialize(self):
+        return {
+            "username":self.username,
+            "password":self.password
             
             # do not serialize the password, its a security breach
         }
