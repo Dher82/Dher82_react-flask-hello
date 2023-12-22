@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const registro = (e) => {
+	const navigate = useNavigate ()
+	const Login = (e) => {
 		e.preventDefault()
-		actions.registro(email, username, password)
+		actions.Login(email, password)
+		navigate ("/single")
 	}
 
 	return (
@@ -17,8 +19,8 @@ export const Demo = () => {
 		<div className="container text-center">
 			<form className="d-inline-block">
 				<div className="col-12 mx-auto mt-5">
-					<label for="inputAddress" className="form-label">User Name</label>
-					<input type="text" className="form-control" id="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+					<label for="inputAddress" className="form-label">email</label>
+					<input type="text" className="form-control" id="email" placeholder="username" value={email} onChange={(e) => setEmail(e.target.value)} />
 				</div>
 				<div className="col-md-12 mx-auto mt-5">
 					<label for="inputPassword4" className="form-label">Password</label>
@@ -26,7 +28,7 @@ export const Demo = () => {
 				</div>
 
 				<div className="col-12 mt-5">
-					<button type="submit" className="btn btn-success" onClick={(e) => registro(e)}>Login</button>
+					<button type="submit" className="btn btn-success" onClick={(e) => Login(e)}>Login</button>
 				</div>
 			</form>
 			<br />

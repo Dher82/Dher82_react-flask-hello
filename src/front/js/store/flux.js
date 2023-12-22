@@ -22,14 +22,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: async () => {
-				try{
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
@@ -48,9 +48,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 
-			registro: async(email,password,username) => {
-				try { 
-					const response = await fetch("https://jubilant-goldfish-7v7xpxg46v6hrg6w-3001.app.github.dev/api/signup",{
+			registro: async (email, password, username) => {
+				try {
+					const response = await fetch("https://jubilant-goldfish-7v7xpxg46v6hrg6w-3001.app.github.dev/api/signup", {
 						method: "POST",
 						body: JSON.stringify({
 							email: email,
@@ -61,17 +61,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 							"Content-type": "application/json"
 						}
 					})
-					
+
 					const data = await response.json()
 					console.log(data)
-					
-				} catch (error){
+
+				} catch (error) {
 					console.log(error)
 				}
 			},
 
+			Login: async (email, password) => {
+				try {
+					const response = await fetch("https://jubilant-goldfish-7v7xpxg46v6hrg6w-3001.app.github.dev/api/login", {
+						method: "POST",
+						body: JSON.stringify({
+							email: email,
+							password: password,
+						}),
+						headers: {
+							"Content-type": "application/json"
+						}
+					})
 
-			
+					const data = await response.json()
+					console.log(data)
+					localStorage.setItem("token", data.access_token)
+
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			logout : () => {
+				try {
+				  localStorage.removeItem("token");
+				  console.log("Logout exitoso");
+				//   navigate("/demo")
+				} catch (error) {
+				  console.log("Error al hacer logout", error);
+				}
+			}
+
 		}
 	};
 };
