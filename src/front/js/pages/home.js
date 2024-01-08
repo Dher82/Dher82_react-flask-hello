@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
@@ -8,9 +9,11 @@ export const Home = () => {
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const navigate = useNavigate ()
 	const registro = (e) => {
 		e.preventDefault()
 		actions.registro(email, password, username )
+		navigate ("/demo")
 	}
 
 
@@ -19,15 +22,15 @@ export const Home = () => {
 
 			<form className="row g-3 mt-5">
 				<div className="col-md-6">
-					<label for="inputEmail4" className="form-label">Email</label>
+					<label htmlFor="inputEmail4" className="form-label">Email</label>
 					<input type="email" className="form-control" id="inputEmail4" value={email} onChange={(e) => setEmail(e.target.value)} />
 				</div>
 				<div className="col-md-6">
-					<label for="inputPassword4" className="form-label">Password</label>
+					<label htmlFor="inputPassword4" className="form-label">Password</label>
 					<input type="password" className="form-control" id="inputPassword4" value={password} onChange={(e) => setPassword(e.target.value)} />
 				</div>
 				<div className="col-12">
-					<label for="inputAddress" className="form-label">User Name</label>
+					<label htmlFor="inputAddress" className="form-label">User Name</label>
 					<input type="text" className="form-control" id="username" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
 				</div>
 				<div className="col-12">

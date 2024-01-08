@@ -12,6 +12,7 @@ export const Demo = () => {
 		e.preventDefault()
 		actions.Login(email, password)
 		navigate ("/single")
+		
 	}
 
 	return (
@@ -19,11 +20,11 @@ export const Demo = () => {
 		<div className="container text-center">
 			<form className="d-inline-block">
 				<div className="col-12 mx-auto mt-5">
-					<label for="inputAddress" className="form-label">email</label>
+					<label htmlFor="inputAddress" className="form-label">email</label>
 					<input type="text" className="form-control" id="email" placeholder="username" value={email} onChange={(e) => setEmail(e.target.value)} />
 				</div>
 				<div className="col-md-12 mx-auto mt-5">
-					<label for="inputPassword4" className="form-label">Password</label>
+					<label htmlFor="inputPassword4" className="form-label">Password</label>
 					<input type="password" className="form-control" id="inputPassword4" value={password} onChange={(e) => setPassword(e.target.value)} />
 				</div>
 

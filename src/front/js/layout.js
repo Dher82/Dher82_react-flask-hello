@@ -22,12 +22,13 @@ const Layout = () => {
     return (
         <div>
             <BrowserRouter basename={basename}>
+                <Navbar />
                 <ScrollToTop>
-                    <Navbar />
+                    
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
+                        <Route element={<Single />} path="/single" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			registro: async (email, password, username) => {
 				try {
-					const response = await fetch("https://jubilant-goldfish-7v7xpxg46v6hrg6w-3001.app.github.dev/api/signup", {
+					const response = await fetch("https://automatic-space-funicular-pj76p6xq4g5h7qq-3001.app.github.dev/api/signup", {
 						method: "POST",
 						body: JSON.stringify({
 							email: email,
@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			Login: async (email, password) => {
 				try {
-					const response = await fetch("https://jubilant-goldfish-7v7xpxg46v6hrg6w-3001.app.github.dev/api/login", {
+					const response = await fetch("https://automatic-space-funicular-pj76p6xq4g5h7qq-3001.app.github.dev/api/login", {
 						method: "POST",
 						body: JSON.stringify({
 							email: email,
@@ -92,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			logout : () => {
+			Logout : () => {
 				try {
 				  localStorage.removeItem("token");
 				  console.log("Logout exitoso");

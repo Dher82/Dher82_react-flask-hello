@@ -21,7 +21,7 @@ export const Navbar = () => {
 						<button className="btn btn-outline-secondary" style={{color: "white"}}>Login</button>
 					</Link>
 
-					<button className="btn btn-outline-secondary" onClick={Logout()} style={{color: "white"}}>Logout</button>
+					<button className="btn btn-outline-secondary" onClick={Logout} style={{color: "white"}}>Logout</button>
 
 				</div>
 			</div>
